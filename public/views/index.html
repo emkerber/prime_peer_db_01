@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="assignmentApp">
+<head>
+  <meta charset="utf-8" />
+  <script src="../vendor/angular.min.js" charset="utf-8"></script>
+  <script src="../scripts/client.js"></script>
+</head>
+<body ng-controller="AssignmentController as assignment">
+
+<h1>Assignment Logger</h1>
+
+<input ng-model="assignment.assignment_number" type="text" placeholder="Assignment Number" />
+<input ng-model="assignment.student_name" type="text" placeholder="Student Name" />
+<input ng-model="assignment.score" type="text" placeholder="Score" />
+<button ng-click="assignment.submit()">Submit</button>
+<br />
+<label>Seach by submission success ID:</label>
+<input ng-model="assignment.search" type="text" />
+<button ng-click="assignment.searchId()">Search</button>
+<br />
+<button ng-click="assignment.get()">Refresh Assignments</button>
+<p ng-repeat="result in assignment.results">Assignment number: {{result.assignment_number}}
+  <br />Student name: {{result.student_name}}
+  <br />Score: {{result.score}}
+  <br />Date completed: {{result.date_completed}}
+  <br />Submission success ID: {{result._id}}
+</p>
+</body>
+</html>
