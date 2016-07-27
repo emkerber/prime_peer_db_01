@@ -1,0 +1,24 @@
+body {
+  text-align: center;
+  background-color: #deb887;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input {
+  background-color: #ffffe0;
+  margin: 20px 10px;
+  width: 150px;
+}
+
+p {
+  text-align: left;
+  margin-left: 38%;
+  font-size: 12px;
+}
+
+.refresh {
+  background-color: #900c3f;
+  color: #ffffe0;
+  font-size: 16px;
+  margin: 20px;
+}

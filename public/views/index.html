@@ -2,13 +2,15 @@
 <html ng-app="assignmentApp">
 <head>
   <meta charset="utf-8" />
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <link href="../styles/stylesheet.css" rel="stylesheet" />
   <script src="../vendor/angular.min.js" charset="utf-8"></script>
   <script src="../scripts/client.js"></script>
 </head>
 <body ng-controller="AssignmentController as assignment">
 
 <h1>Assignment Logger</h1>
-
+<label>Enter a new assignment:</label>
 <input ng-model="assignment.assignment_number" type="text" placeholder="Assignment Number" />
 <input ng-model="assignment.student_name" type="text" placeholder="Student Name" />
 <input ng-model="assignment.score" type="text" placeholder="Score" />
@@ -18,12 +20,13 @@
 <input ng-model="assignment.search" type="text" />
 <button ng-click="assignment.searchId()">Search</button>
 <br />
-<button ng-click="assignment.get()">Refresh Assignments</button>
+<button class="refresh" ng-click="assignment.get()">Refresh Assignments</button>
 <p ng-repeat="result in assignment.results">Assignment number: {{result.assignment_number}}
   <br />Student name: {{result.student_name}}
   <br />Score: {{result.score}}
   <br />Date completed: {{result.date_completed}}
   <br />Submission success ID: {{result._id}}
+  <br /><button class="delete" ng-click="assignment.delete(result._id)">Delete Assignment</button>
 </p>
 </body>
 </html>

@@ -39,9 +39,11 @@ router.post('/add', function(request, response) {
   });
 });
 
+//to search by ID
 router.get('/search/:id?', function(request, response) {
   var id = request.params.id;
 
+  //if no ID is entered in the ID search box, send all of the assignments
   if(!id) {
     Assignment.find({}, function(err, assignment) {
       if(err) {
@@ -51,7 +53,7 @@ router.get('/search/:id?', function(request, response) {
       }
     })
   } else {
-    Assignment.find({'_id' : id }, function (err, assignment) {
+    Assignment.find({'_id' : id }, function(err, assignment) {
       if(err) {
         console.log('Error finding by ID', err);
         response.sendStatus(500);
@@ -61,6 +63,20 @@ router.get('/search/:id?', function(request, response) {
       }
     })
   }
+})
+
+//hard mode: delete individual assignments 
+router.get('/delete/:id', function(request, response) {
+  var id = request.params.id;
+
+  Assignment.findByIdAndRemove({ '_id' : id }, function(err, assignment) {
+    if(err) {
+      console.log('Error finding by ID and removing:', err);
+      response.sendStatus(500);
+    } else {
+      console.log('Success finding by ID and removing', assignment);
+    }
+  })
 })
 
 module.exports = router;
